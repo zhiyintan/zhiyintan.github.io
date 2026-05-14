@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/cv.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+        <title>Zhiyin Tan's Curriculum Vitae</title>
+        <style>
+            :root {
+                --acm-serif: "Linux Libertine", "Linux Libertine O", "Times New Roman", serif;
+                --acm-sans: "Linux Biolinum", "Linux Biolinum O", "Helvetica Neue", Arial, sans-serif;
+            }
+
+            @font-face {
+                font-family: "Linux Libertine";
+                font-style: normal;
+                font-weight: 400;
+                font-display: swap;
+                src: local("Linux Libertine O"), local("Linux Libertine O Regular"),
+                    url("../fonts/LinuxLibertineORegular.otf") format("opentype");
+            }
+            @font-face {
+                font-family: "Linux Libertine";
+                font-style: italic;
+                font-weight: 400;
+                font-display: swap;
+                src: local("Linux Libertine O Italic"),
+                    url("../fonts/LinuxLibertineOItalic.otf") format("opentype");
+            }
+            @font-face {
+                font-family: "Linux Libertine";
+                font-style: normal;
+                font-weight: 600;
+                font-display: swap;
+                src: local("Linux Libertine O Semibold"),
+                    url("../fonts/LinuxLibertineOSemibold.otf") format("opentype");
+            }
+            @font-face {
+                font-family: "Linux Libertine";
+                font-style: italic;
+                font-weight: 600;
+                font-display: swap;
+                src: local("Linux Libertine O Semibold Italic"),
+                    url("../fonts/LinuxLibertineOSemiboldItalic.otf") format("opentype");
+            }
+            @font-face {
+                font-family: "Linux Libertine";
+                font-style: normal;
+                font-weight: 700;
+                font-display: swap;
+                src: local("Linux Libertine O Bold"),
+                    url("../fonts/LinuxLibertineOBold.otf") format("opentype");
+            }
+            @font-face {
+                font-family: "Linux Libertine";
+                font-style: italic;
+                font-weight: 700;
+                font-display: swap;
+                src: local("Linux Libertine O Bold Italic"),
+                    url("../fonts/LinuxLibertineOBoldItalic.otf") format("opentype");
+            }
+
+            @font-face {
+                font-family: "Linux Biolinum";
+                font-style: normal;
+                font-weight: 400;
+                font-display: swap;
+                src: local("Linux Biolinum O Regular"),
+                    url("../fonts/LinuxBiolinumORegular.otf") format("opentype");
+            }
+            @font-face {
+                font-family: "Linux Biolinum";
+                font-style: italic;
+                font-weight: 400;
+                font-display: swap;
+                src: local("Linux Biolinum O Italic"),
+                    url("../fonts/LinuxBiolinumOItalic.otf") format("opentype");
+            }
+            @font-face {
+                font-family: "Linux Biolinum";
+                font-style: normal;
+                font-weight: 700;
+                font-display: swap;
+                src: local("Linux Biolinum O Bold"),
+                    url("../fonts/LinuxBiolinumOBold.otf") format("opentype");
+            }
+
+            body {
+                align-items: center;
+                font-family: var(--acm-serif);
+                color: #1a1a1a;
+                font-size: 10px; line-height: 12px; font-weight: 400; font-style: normal; letter-spacing: 0;
+                width: 100%;
+                max-width: 780px;
+                min-width: 780px;
+                height: auto;
+                margin: auto;
+                padding: 5% 4%;
+            }
+
+            .container {
+                padding: 0;
+            }
+
+            .title {
+                align-items: center;
+                text-align: left;
+                margin: 0 0 10px 0;
+            }
+
+            .title h2 {
+                font-family: var(--acm-sans);
+                font-size: 22px; 
+                line-height: 25px;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+                margin-bottom: 10px;
+            }
+
+            .title h4 {
+                font-family: var(--acm-sans);
+                font-size: 14px; 
+                line-height: 20px;
+                font-weight: 500;
+                letter-spacing: 0.06em;
+                color: #424242;
+                margin: 5px 0;
+            }
+
+            .two_col_header {
+                display: flex;
+                justify-content: space-between;
+                grid-template-columns: 68% auto;
+                column-gap: 16px;
+                padding-bottom: 0px;
+            }
+
+            .two_col_content {
+                display: flex;
+                justify-content: space-between;
+                grid-template-columns: 80% auto;
+                column-gap: 14px;
+            }
+
+
+            .one-block {
+                margin: 0 0 18px 0;
+            }
+
+            .left-content .one-block {
+                margin: 0 0 18px 0;
+            }
+
+            .right-content .one-block {
+                margin: 0 0 4px 0;
+            }
+
+            .experiment {
+                margin: 0px 0 6px 0;
+            }
+
+            .experiment #organization, 
+            .experiment #reference_link,
+            .experiment #authors {
+                font-style: italic;
+                text-align: left;
+                margin: 0 0 0px 0;
+            }
+
+            .experiment #experiment-title {
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center; 
+                column-gap: 10px;
+            }
+
+            .experiment #link-year {
+                display: flex;
+                justify-content: flex-end; 
+                align-items: center; 
+                column-gap: 15px;
+            }
+
+            .experiment #link {
+                display: inline-flex; 
+                align-items: center; 
+                column-gap: 4px;
+            }
+
+            .icon_description {
+                display: flex;
+                justify-content: flex-start;
+                grid-template-columns: 20px 1fr;
+                align-items:center;
+                column-gap: 6px;
+                margin: 3px 0;
+            }
+
+            .icon_description p {
+                width: inherit;
+            }
+
+            h1, h2, h3 {
+                font-family: var(--acm-sans);
+                font-weight: 600;
+                letter-spacing: 0px;
+                margin: 0 0 8px 0;
+            }
+
+            h4 {
+                font-family: var(--acm-sans);
+                font-size: 15px; 
+                line-height: 16px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                border-bottom: 1px solid #b3b3b3;
+                padding-bottom: 6px;
+                margin: 12px 0 8px 0;
+            }
+
+            h5 {
+                font-family: var(--acm-sans);
+                font-size: 12.5px; 
+                line-height: 17px;
+                font-weight: 500;
+                letter-spacing: -0.1px;
+                margin: 0;
+            }
+
+            li, p {
+                font-size: 12.5px;
+                line-height: 17px;
+                letter-spacing: -0.1px;
+                align-items: center;
+                text-align: justify;
+                margin: 0;
+            }
+
+            hr {
+                width: 96%;
+                height: 0.01px;
+                margin: 10px 0;
+            }
+
+            ul {
+                padding-inline: 20px 0px;
+                margin: 0;
+            }
+
+            li {
+                list-style-type: none;
+                line-height: 18px;
+                position: relative;    /* It's needed for setting position to absolute in the next rule. */
+            }
+
+            li::before {
+                content: '•';
+                position: absolute;
+                left: -15px;          /* Adjust this value so that it appears where you want. */
+                font-size: 12.5px;      /* Adjust this value so that it appears what size you want. */
+            }
+
+            .container a {
+                font-size: 12.5px;
+                color: inherit;
+                text-decoration: dotted underline rgb(102, 102, 102) 1px;
+                text-underline-offset: 3px;
+                transition: all 0.2s ease-in-out;
+                letter-spacing: -0.1px;
+            }
+
+            .container a:visited {
+                color: inherit;
+            }
+
+            .container a:hover {
+                color: inherit;
+            }
+
+            .download {
+                text-align: right;
+                padding: 0 0 40px 0;
+                margin: 0;
+            }
+
+            button {
+                align-items: center;
+                align-content: center;
+                height: 38px;
+                width: 140px;
+                border: 1px solid rgb(22, 22, 22);
+                box-shadow: none;
+                background-color: white;
+                border-radius: 0.5vh;
+                transition: all 0.2s ease-in-out;
+                padding: 0;
+                margin: 0;
+            }
+
+            button:hover {
+                cursor: pointer;
+                border-radius: 0.5vh;
+                background-color: rgb(255, 255, 255);
+            }
+
+            @media screen and (max-width: 730px) {
+
+            }
+
+            @media print {
+                @page {
+                    width: 190mm;
+                    margin: 15mm 15mm;
+                }
+
+                body {
+                    max-width: none;
+                    width: auto;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 12.6px;
+                    line-height: 16px;
+                }
+
+                .experiment {
+                    margin: 0px 0 8px 0;
+                }
+
+                .container {
+                    padding: 0;
+                }
+
+                
+                .two_col_header {
+                    grid-template-columns: 66% auto;
+                    column-gap: 10px;
+                }
+
+                .two_col_content {
+                    grid-template-columns: 78% auto;
+                    column-gap: 8px;
+                }
+
+                .one-block {
+                    margin: 0 0 15px 0;
+                }
+
+                .left-content .one-block {
+                    margin: 0 0 10px 0;
+                }
+
+                h2 {
+                    font-size: 14px;
+                    line-height: 20px;
+                    
+                }
+
+                .title h2 {
+                    margin: 5px 0;
+                }
+
+                h4 {
+                    font-size: 13px;
+                    line-height: 18px;
+                    padding-bottom: 4px;
+                    margin: 10px 0 6px 0;
+                    letter-spacing: 2px;
+                }
+
+                .title h4 {
+                    margin-bottom: 20px 0;
+                }
+
+                h5 {
+                    font-size: 12.6px;
+                    line-height: 16px;
+                    letter-spacing: -0.2px;
+                }
+
+                p,li {
+                    font-size: 12.8px;
+                    letter-spacing: -0.2px;
+                }
+
+
+
+                ul{
+                    padding-inline: 0px 0px;
+                }
+
+                a {
+                    font-size: 11px;;
+                    color: black;
+                    text-decoration: dotted underline rgb(190, 190, 190) 0.1px;
+                    text-underline-offset: 1px;
+                    background: transparent;
+                    box-shadow: none
+                }
+
+                a:visited {
+                    color: black;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <!--<div class="download">
+            <button onclick="downloadPDF()">
+                <span style="display:grid; grid-template-columns: 15px 98px; column-gap: 3px; padding: 0 10px;">
+                    <img src="./img/printer.png" alt="printer" style="width: 15px;">
+                    &nbsp Download PDF
+                </span>
+            </button>
+        </div>-->
+        <div class="container">
+            <div class="two_col_header">
+                <div class="two_col_content" style="column-gap: 35px; padding-left: 5px">
+                    <div>
+                        <img src="../pic/avatar_green_round.png" alt="avatar" style="height: 80px;">
+                    </div>
+                    <div class="title" style="padding-top: 16px">
+                        <h2> Zhiyin Tan </h2>
+                        <h4 style="font-weight: 400; font-style: oblique 50deg;"> 
+                            Natural Language Processing | Knowledge Mining </h4>
+                    </div>
+                    <!--<div  class="one-block" id="Profile">
+                        <h4>Profile</h4>
+                        <p>I am an enthusiastic researcher bridging the realms of language and AI. 
+                            With a strong penchant for knowledge mining, 
+                            I excel in deriving structured insights from unstructured data. 
+                            My expertise extends to DevOps for Large Language Models (LLM), 
+                            showcasing my commitment to harnessing cutting-edge AI solutions.</p>
+                    </div>-->
+                </div>
+                <div class="right-content">
+                    <div class="one-block" id="Contact" style="padding-top: 16px">
+                        <!--<h4>Contact</h4>-->
+                        <div class="icon_description">
+                            <img src="../pic/linkedin.ico" alt="linkedin" style="height: 12.8px;">
+                            <a href="https://www.linkedin.com/in/zhiyin-tan/" target="_blank" rel="noopener noreferrer"><p> linkedin.com/in/zhiyin-tan/ </p></a>
+                        </div>
+
+                        <div class="icon_description">
+                            <img src="../pic/github_icon.ico" alt="website" style="height: 13px;">
+                            <a href="https://zhiyintan.github.io/" target="_blank" rel="noopener noreferrer"><p> zhiyintan.github.io/ </p></a>
+                        </div>
+
+                        <div class="icon_description">
+                            <img src="../pic/gmail_icon.ico" alt="email" style="height: 13px;">
+                            <a href="mailto:zhiyin.tan@l3s.de"> zhiyin.tan@l3s.de </a>
+                        </div>
+                        
+                        <!--<div class="icon_description">
+                             <p style="margin-left: 2px; margin-top: 2px;"><b>Residence&nbsp;Permit:</b><br> Niederlassungserlaubnis&nbsp;(§&nbsp;18c)</p>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="experiment_content">
+                <div class="one-block" id="Education">
+                    <h4> Education </h4>
+
+                    <div class="experiment">
+                        <div class="two_col_content">
+                            <h5> P.hD. Student in Natural Language Processing </h5>
+                            <p> 02.2024 - current </p>
+                        </div>
+                        <p id="organization">L3S Research Center, Leibniz University Hannover, Hannover, Germany</p> 
+    
+                    <div class="experiment">
+                        <div class="two_col_content">
+                            <h5> M.Sc. Computaional Linguistics </h5>
+                            <p> 11.2018 - 03.2023</p>
+                        </div>
+                        <p id="organization">IMS, Departments of Computer Science, Faculty 5, University of Stuttgart, Stuttgart, Germany</p> 
+                    </div>
+
+                    <div class="experiment">
+                        <div class="two_col_content">
+                            <h5> M.A. Chinese Linguistics </h5>
+                            <p> 08.2016 - 10.2018</p>
+                        </div>
+                        <p id="organization">Faculty of Arts and Humanities, University of Macau, Macau, China (Scholarship)</p>
+                    </div>
+
+                    <div class="experiment">
+                        <div class="two_col_content">
+                            <h5> B.A. Chinese Language and Literature (Education) </h5>
+                            <p> 09.2012 - 06.2016</p>
+                        </div>
+                        <p id="organization">Wuyi University, Jiangmen, China (an outstanding student leader in the top 2% and an outstanding graduate in the top 10%.)</p>
+                    </div>
+                </div>
+
+                <div  class="one-block" id="Work Experience">
+                    <h4> Work Experience </h4>
+                    <div class="experiment">
+                        <div class="two_col_content">
+                            <div class="two_col_content" style="grid-template-columns: auto auto;">
+                                <h5> Research Assistant </h5>
+                                <p id="organization">L3S Research Center, Leibniz University Hannover, Hannover, Germany</p>
+                            </div>
+                            <p> 02.2024 - Current </p>
+                        </div>
+                        
+                        <p> Working in project Hybrid Intelligence through Interpretable AI (<a href="https://www.uni-osnabrueck.de/fb6/informatik/hybrint" target="_blank" rel="noopener noreferrer">HybrInt</a>)
+                            emphasizing academic publications knowledge mining. </p>
+                        <p></p>
+                    </div>
+                        
+                    <div class="experiment">
+                        <div class="two_col_content">
+                            <div class="two_col_content" style="grid-template-columns: auto auto;">
+                                <h5> R&D NLU Language Specialist </h5>
+                                <p id="organization"> Cerence GmbH, Aachen & Ulm, Germany (Remote) </p>
+                            </div>
+                            <p> 10.2020 - 09.2022 </p>
+                        </div>
+                        
+                        <p> Processed training/test data, developed a WPF annotation tool, 
+                            and enhanced dialogue system accuracy by 10% through error analysis.
+                        </p>
+                    </div>
+
+                    <!--
+                    <div class="experiment">
+                        <div class="two_col_content">
+                            <h5> Marketing Data Analyst Intern </h5>
+                            <p> 07.2019 - 08.2019 </p>
+                        </div>
+                        <p id="organization"> TINNO Mobile/Wiko Mobile, Shenzhen, China </p>
+                        <p> Developed a Python scraping suite for real-time automated collection of competitors' product and sales information.
+                        </p>
+                    </div>
+                    -->
+
+                    <div class="experiment">
+                        <div class="two_col_content">
+                            <div class="two_col_content" style="grid-template-columns: auto auto;">
+                                <h5> Research Analyst Intern </h5>
+                                <p id="organization"> E-Research & Solutions, Macau, China </p>
+                            </div>
+                            <p> 12.2016 - 06.2017 </p>
+                        </div>
+                        <p> Analyzed social media data for public opinion fine-grained sentiment analysis, contributed to writing reports & “Data Mining” brochures.
+                        </p>
+                    </div>
+
+                    <div class="experiment">
+                        <div class="two_col_content">
+                            <div class="two_col_content" style="grid-template-columns: auto auto;">
+                                <h5>Teaching Assistant</h5>
+                                <p id="organization">University of Macao, Macao, China</p>
+                            </div>
+                            <p> 01.2017 - 05.2017 </p>
+                        </div>
+                        <p>Prepared materials, organized group discussions, 
+                            assisted in organizing conferences, and responsible for publicity work.
+                        </p>
+                    </div> 
+
+                </div>
+
+                <div  class="one-block" id="Publications">
+                    <h4>Publications</h4>
+
+                    
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5>Beyond Catalogue Counts: the Dataset Visibility Asymmetry in Low-Resource Multilingual NLP</h5>
+                            <div id="link-year">
+                                <div id="link">
+                                    <a href="https://github.com/zhiyintan/dataset-visibility-asymmetry/blob/main/docs/Slides%20for%20LREC%202026%20%C2%B7%20Beyond%20Catalogue%20Counts%20%C2%B7%20final%20version%202.pdf" target="_blank" rel="noopener noreferrer"> 
+                                        [Slides] </a>
+                                    <a href="http://www.lrec-conf.org/proceedings/lrec2026/pdf/2026.lrec2026-1.481.pdf" target="_blank" rel="noopener noreferrer"> 
+                                        [Paper] </a>
+                                </div>
+                                <p> 2026 </p>
+                            </div>
+                        </div>
+                        <p id="authors"> <b>Zhiyin Tan</b>, Changxu Duan, 
+                            The 15th International Conference on Language Resources and Evaluation (LREC, Oral). </p>
+                    </div>
+                    
+
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5 style="display: flex; justify-content: flex-start; align-items: center; column-gap: 5px;">
+                                Diagnosing Structural Failures in LLM-Based Evidence Extraction for Meta-Analysis
+                                <p style="letter-spacing: -0.3px; border: 1.4px dotted rgb(134, 134, 134); border-radius: 5px; padding: 0px 0px; line-height: 120%; font-weight: 400;">
+                                ⎡Best Paper Award⎦</p>
+                            </h5>
+                            
+                            <div id="link-year">
+                                <div id="link">
+                                    <a href="https://github.com/zhiyintan/LLM-Meta-Analysis/blob/main/presentation/ircdl%202026.pdf" target="_blank" rel="noopener noreferrer"> 
+                                        [Slides] </a>
+                                    <a href="https://arxiv.org/abs/2602.10881" target="_blank" rel="noopener noreferrer"> 
+                                        [arXiv] </a>
+                                </div>
+                                <p> 2026 </p>
+                            </div>
+                        </div>
+
+                        <p id="authors"><b>Zhiyin Tan</b>, Jennifer D'Souza,
+                            the 22nd Conference on Information and Research Science Connecting to Digital and Library Science. </p>  
+                    </div>
+
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5>Multi-Disciplinary Dataset Discovery from Citation-Verified Literature Contexts</h5>
+                            <div id="link-year">
+                                <div id="link">
+                                   
+                                    <!--<a href="https://github.com/Fireblossom/citation-context-dataset-discovery" target="_blank" rel="noopener noreferrer"> 
+                                        [GitHub] </a>
+                                    <a href="https://doi.ieeecomputersociety.org/10.1109/JCDL67857.2025.00022" target="_blank" rel="noopener noreferrer"> 
+                                        [Paper] </a>-->
+                                    <a href="https://github.com/Fireblossom/Fireblossom.github.io/blob/master/attach_files/JCDL2025_Presentation.pdf" target="_blank" rel="noopener noreferrer"> 
+                                        [Slides] </a>
+                                    <a href="https://arxiv.org/abs/2601.05099" target="_blank" rel="noopener noreferrer"> 
+                                        [arXiv] </a>
+                                </div>
+                                <p> 2025 </p>
+                            </div>
+                        </div>
+
+                        <p id="authors"> <b>Zhiyin Tan</b>, Changxu Duan, 
+                            the 25th ACM/IEEE Joint Conference on Digital Libraries (JCDL, Oral).</p>
+                    </div>
+
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5>Semantically Orthogonal Framework for Citation Classification: Disentangling Intent and Content</h5>
+                            <div id="link-year">
+                                <div id="link">
+                                    
+                                    <!--<a href="https://github.com/zhiyintan/SOFT"  target="_blank" rel="noopener noreferrer"> 
+                                        [GitHub] </a>
+                                    <a href="https://doi.org/10.1007/978-3-032-05409-8_12" target="_blank" rel="noopener noreferrer"> 
+                                        [Paper] </a>-->
+                                    <a href="https://github.com/Fireblossom/Fireblossom.github.io/blob/master/attach_files/TPDL2025_Presentation.pdf" target="_blank" rel="noopener noreferrer"> 
+                                        [Slides] </a>
+                                    <a href="https://arxiv.org/abs/2601.05103" target="_blank" rel="noopener noreferrer"> 
+                                        [arXiv] </a>
+                                </div>
+                                <p> 2025 </p>
+                            </div>
+                        </div>
+
+                        <p id="authors">Changxu Duan*, <b>Zhiyin Tan*</b>(*co-first),
+                            the 29th International Conference on Theory and Practice of Digital Libraries (TPDL, Oral). </p>  
+                    </div>
+
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5>Toward purpose-oriented topic model evaluation enabled by large language models</h5>
+                            <div id="link-year">
+                                <div id="link">
+                                    
+                                    <!--<a href="https://github.com/zhiyintan/topic-model-LLMjudgment"  target="_blank" rel="noopener noreferrer"> 
+                                        [GitHub] </a>
+                                    <a href="https://doi.org/10.1007/s00799-025-00429-5" target="_blank" rel="noopener noreferrer"> 
+                                        [Paper] </a>-->
+                                    <a href="https://arxiv.org/abs/2509.07142" target="_blank" rel="noopener noreferrer"> 
+                                        [arXiv] </a>
+                                   
+                                </div>
+                                <p> 2025 </p>
+                            </div>
+                        </div>
+
+                        <p id="authors"><b>Zhiyin Tan</b>, Jennifer D'Souza,
+                            International Journal on Digital Libraries, Volume 26, article number 23, 2025 (IJDL).</p>  
+                    </div>
+
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5>Bridging the Evaluation Gap: Leveraging Large Language Models for Topic Model Evaluation</h5>
+                            <div id="link-year">
+                                <div id="link">
+                                    <!--
+                                    <a href="https://github.com/zhiyintan/topic-model-LLMjudgment"  target="_blank" rel="noopener noreferrer"> 
+                                        [GitHub] </a>
+                                    <a href="https://ceur-ws.org/Vol-3937/paper15.pdf" target="_blank" rel="noopener noreferrer"> 
+                                        [Paper] </a>-->
+                                    <a href="https://github.com/zhiyintan/topic-model-LLMjudgment/blob/main/presentation/Presentation_IRCDL_2025.pdf" target="_blank" rel="noopener noreferrer"> 
+                                        [Slides] </a>
+                                    <a href="https://arxiv.org/abs/2502.07352" target="_blank" rel="noopener noreferrer"> 
+                                        [arXiv] </a>
+                                    
+                                </div>
+                                <p> 2025 </p> 
+                            </div>   
+                        </div>
+
+                        <p id="authors"><b>Zhiyin Tan</b>, Jennifer D'Souza,
+                            the 21st Conference on Information and Research Science Connecting to Digital and Library Science. </p>  
+                    </div>
+                    
+                    
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5>LATEX Rainbow: Universal LATEX to PDF Document Semantic & Layout Annotation Framework</h5>
+                            <div id="link-year">
+                                <div id="link">
+                                    <!--
+                                    <a href="https://github.com/InsightsNet/texannotate" target="_blank" rel="noopener noreferrer"> 
+                                        [GitHub] </a>-->
+                                    <a href="https://doi.org/10.18653/v1/2023.wiesp-1.8" target="_blank" rel="noopener noreferrer"> 
+                                        [Paper] </a>
+                                    
+                                </div>
+                                <p> 2023 </p> 
+                            </div>
+                        </div>
+    
+                        <p id="authors"> Changxu Duan, <b>Zhiyin Tan</b>, Sabine Bartsch, 
+                            the 2nd Workshop on Information Extraction from Scientific Publications at IJCNLP-AACL.</p>
+                    </div>
+
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5>Applied Contrastive Learning to Fine-grained Entity Type Classification (Master's Thesis)</h5>
+                            <div id="link-year">
+                                <div id="link">
+                                    <a href="https://www2.ims.uni-stuttgart.de/bibliographie/entry/e37cb917b587af1b2b57a9ed8ff94af0e2793509/" target="_blank" rel="noopener noreferrer"> 
+                                        [BibTex] </a>
+                                </div>
+                                <p> 2023 </p> 
+                            </div>
+                        </div>
+                        <!--
+                        <p id="authors"> <b>Zhiyin Tan</b>,
+                            Master's Thesis.</p>
+                        -->
+                    </div>
+
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5>Text-based Personality Prediction</h5>
+                            <div id="link-year">
+                                <div id="link">
+                                    
+                                    <a href="https://ai.ntu.edu.tw/mlss2021new/post/" target="_blank" rel="noopener noreferrer"> 
+                                        [Schedule] </a>
+                                    
+                                </div>
+                                <p> 2021 </p> 
+                            </div>
+                        </div>
+    
+                        <p id="authors"> <b>Zhiyin Tan</b>,
+                            Poster presented at the Machine Learning Summer School (MLSS 2021 Taipei).</p>
+                    </div>
+
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5 style="display: flex; justify-content: flex-start; align-items: center; column-gap: 5px;">
+                                The use of Cantonese Discourse Markers by Legislative Council Members in Hong Kong and Macau
+                                <p style="letter-spacing: -0.3px; border: 1.4px dotted rgb(134, 134, 134); border-radius: 5px; padding: 0px 0px; line-height: 120%; font-weight: 400;">
+                                ⎡Excellent Award⎦</p>
+                            </h5>
+                            <div id="link-year">
+                                <div id="link">
+                                    <!--
+                                    <a href="https://cantonese.arts.ubc.ca/wicl-4/" target="_blank" rel="noopener noreferrer"> 
+                                        [Abstract] </a>
+                                    -->
+                                </div>
+                                <p> 2018 </p> 
+                            </div>
+                        </div>
+    
+                        <p id="authors"> <b>Zhiyin Tan</b>,
+                            Master's Thesis, preliminary results presented at the 4th Workshop on Innovations in Cantonese Linguistics (WICL-4).</p>
+                    </div>
+                    
+                    <div class="experiment">
+                        <div id="experiment-title">
+                            <h5>A Comparative Study of Mandarin Pitch Range in Northern and Central Taiwan</h5>
+                            <div id="link-year">
+                                <div id="link">
+                                    
+                                    <a href="https://oia.ntu.edu.tw/short-term-programs/courses/8BF146B51660" target="_blank" rel="noopener noreferrer"> 
+                                        [Program] </a>
+                                    
+                                </div>
+                                <p> 2017 </p> 
+                            </div>
+                        </div>
+    
+                        <p id="authors"> <b>Zhiyin Tan</b>,
+                            Research conducted during the National Taiwan University Summer+ Intensive Research Visiting Program.</p>
+                    </div>
+
+                </div>
+
+                <div  class="one-block" id="Activities & Skills">
+                    <h4> Activities & Skills </h4>
+                                 
+                    <ul style="padding-inline-start: 15px;">
+                        <li>
+                            <div class="two_col_content" style="grid-template-columns: auto auto; justify-content: flex-start;">
+                                <h5> Serve as a Reviewer: </h5>
+                                <p> ACM Transactions on Intelligent Systems and Technology, the International AAAI Conference on Web and Social Media</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="two_col_content" style="grid-template-columns: auto auto; justify-content: flex-start;">
+                                <h5>IBM Female Mentoring Program (2020, Renningen):</h5> 
+                                <p>A training program for selected students in CS covering AI and data science.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="two_col_content" style="grid-template-columns: auto auto; justify-content: flex-start;">
+                                <h5>Language:</h5>
+                                <p>Chinese Cantonese Native, Chinese Mandrain Native, English C1, German A1</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="two_col_content" style="grid-template-columns: auto auto; justify-content: flex-start;">
+                                <h5>Others: </h5>
+                                <p>Over 20 years in painting, 5 years of news reporting experience, and living with two cats.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
