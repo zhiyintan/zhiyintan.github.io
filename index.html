@@ -4,17 +4,21 @@
         <meta charset="utf-8">
         <title>Zhiyin's Homepage</title>
         <meta name="author" content="Zhiyin Tan">
-        <meta name="description" content="Personal knowledge record fairyland: natural language processing(nlp), animation, thoughts">
+        <meta name="description" content="Zhiyin Tan (谭芷茵) — PhD student in Natural Language Processing at the L3S Research Center, Leibniz University Hannover. Scholarly document processing, topic model evaluation, dataset discovery.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta property="og:image" content="https://www.icloud.com/iclouddrive/0OuJofHg8h4NTxXeb0weLM3ng#Little_fox's_back-big" />
-        <meta property="og:description" content="Zhiyin Tan's fairyland.">
-        <meta property="og:title" content="Zhiyin's Fairyland" />
+        <meta property="og:image" content="https://zhiyintan.github.io/pic/avatar_green_round.png" />
+        <meta property="og:description" content="PhD student in Natural Language Processing at the L3S Research Center, Leibniz University Hannover." />
+        <meta property="og:title" content="Zhiyin Tan" />
+        <meta property="og:url" content="https://zhiyintan.github.io/" />
         <meta property="og:type" content="website" />    
 
         <link rel="Shortcut Icon" href="/pic/little_fox_round.ico" type="image/x-icon">
 
         <link rel="stylesheet" href="./css/index.css">
+
+        <link rel="stylesheet" href="./css/home.css">
+
         <script src="./js/csi.js" defer></script>
     </head>
 
@@ -25,63 +29,74 @@
             <main class="site-home-main">
 
                 <div id="start" class="site-home-content">
-                    <ul style="display: grid; grid-template-columns:repeat(auto-fill, minmax(8em, 1fr)); gap: 1.5em;
-                                 padding: 2vw 0 0 0; margin: 0;">
+                    <ul class="idcard-row">
                         <li style="display: grid; justify-items: center; align-items: center;">
                             <img class="avatar" title="avatar" src="./pic/avatar_green_round_small.png" 
                             style="min-width: 5em; max-width: 8em;">
                         </li>
-                        <li style="min-width: 250px; display: grid; grid-template-rows:repeat(auto-fill, minmax(8em, 1fr)); gap: 1.5em;">
+                        <li class="namecard-cell">
                             <div class="namecard">          
                                 <h1 class="site-title"> Tan, Zhiyin </h1>
-                                <p style="padding: 0 0 8px 3px;">NLP Researcher</p>
-                                <a href="./cv/cv.html" style="text-decoration: underline; font-size: 1.4rem;" target="_blank">CV.pdf</a>
+                                <p class="namecard-role">PhD Student in Natural Language Processing</p>
+                                <p class="namecard-affil">L3S Research Center, Leibniz University Hannover, Germany</p>
+                                <p class="namecard-links">
+                                    <a href="https://scholar.google.com/citations?user=PZJS5MIAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>
+                                    <span class="sep">/</span>
+                                    <a href="https://www.linkedin.com/in/zhiyin-tan/" target="_blank">LinkedIn</a>
+                                    <span class="sep">/</span>
+                                    <a href="./cv/cv.html" target="_blank">CV</a>
+                                </p>
                             </div>   
                         </li>
                     </ul>
 
                     <div class="intro" style="
-                    text-align: left; line-height: 1.5em; max-width: 50em; margin: 40px 0;">  
-                        <p> 
-                            With an academic background spanning the fields of Natural Language Processing and Linguistics, 
-                            my journey in academia has been both enriching and diverse. 
-                            <br><br>
-                            I hold an M.Sc. in Computational Linguistics from the University of Stuttgart, Germany, 
-                            where I was mentored by 
-                            <a href="https://nlpado.de/~sebastian/" target="_blank">Prof. Sebastian Padó</a>
-                            at the 
-                            <a href="https://www.ims.uni-stuttgart.de/en/" target="_blank">Institute of Natural Language Processing (IMS)</a>. 
-                            My master's thesis focused on optimizing fine-grain entity type classification using contrastive learning.
-                            <br>
-                            Previously, I earned an M.A. in Chinese Linguistics under the guidance of 
-                            <a href="https://damingxu3.academia.edu/" target="_blank">Prof. Daming Xu</a>
-                            at the 
-                            <a href="https://fah.um.edu.mo/department-of-chinese-language-and-literature/programmes/" target="_blank">Faculty of Arts and Humanities</a>
-                            of the University of Macau in Macau China, 
-                            with a thesis focusing on sociolinguistics. 
-                            <br>
-                            My academic pursuit began with a B.A. in Chinese Language and Literature from 
-                            <a href="https://www.wyu.edu.cn/" target="_blank">Wuyi University</a>, 
-                            China. 
-                            <br><br>
-                            Each educational venture has honed my skills and fostered a deep appreciation for 
-                            the complexities and nuances of linguistics and language processing.  
+                    text-align: left; line-height: 1.5em; margin: 40px 0 0 0;">  
+                        <p>
+                            I am a PhD student at the
+                            <a href="https://www.l3s.de/" target="_blank">L3S Research Center</a>,
+                            Leibniz University Hannover, supervised by
+                            <a href="https://www.tib.eu/en/research-development/research-groups-and-labs/data-science-and-digital-libraries/staff/soeren-auer" target="_blank">Prof. Sören Auer</a>.
+                            I work in the
+                            <a href="https://www.uni-osnabrueck.de/fb6/informatik/hybrint" target="_blank">HybrInt</a>
+                            project on knowledge mining from academic publications.
                         </p>
                         <p>
-                            My name written as <span lang="ch">谭芷茵</span> in Chinese, pronounced /tɐːn/ /dʒɘ/ /jɪːn/ in Mandarin, 
+                            I hold an M.Sc. in Computational Linguistics from the
+                            <a href="https://www.uni-stuttgart.de/en/" target="_blank">University of Stuttgart</a>, Germany,
+                            with a thesis on contrastive learning for fine-grained entity type classification,
+                            supervised by
+                            <a href="https://nlpado.de/~sebastian/" target="_blank">Prof. Sebastian Padó</a>
+                            at the
+                            <a href="https://www.ims.uni-stuttgart.de/en/" target="_blank">IMS</a>.
+                            Before that, I earned an M.A. in Chinese Linguistics from the
+                            <a href="https://fah.um.edu.mo/department-of-chinese-language-and-literature/programmes/" target="_blank">University of Macau</a>,
+                            with a sociolinguistics thesis on Cantonese discourse markers supervised by
+                            <a href="https://damingxu3.academia.edu/" target="_blank">Prof. Daming Xu</a>,
+                            and a B.A. in Chinese Language and Literature from
+                            <a href="https://www.wyu.edu.cn/english/" target="_blank">Wuyi University</a>
+                            in Guangdong, China.
+                        </p>
+                        <p class="intro-name">
+                            My name is written <span lang="ch">谭芷茵</span> in Chinese, pronounced /tɐːn/ /dʒɘ/ /jɪːn/ in Mandarin, 
                             /tam/ /dziː/ /jɐn/ in Cantonese.
                         </p>
-                        <br><br>
-                        <p>
-                            <a href="./index.html" style="text-decoration: underline;">English</a>
-                            /
-                            <a href="./zho/index_cmn.html" style="text-decoration: underline;">简</a>
-                            /
-                            <a href="./zho/index_yue.html" style="text-decoration: underline;">繁</a>
+                        <p class="lang-switch">
+                            <a href="./index.html">English</a>
+                            <span class="sep">/</span>
+                            <a href="./zho/index_cmn.html">简</a>
+                            <span class="sep">/</span>
+                            <a href="./zho/index_yue.html">繁</a>
                         </p>
                     </div>
 
-                    
+                    <section class="pub-section">
+                        <h2 class="pub-heading">Selected Publications</h2>
+
+                        <div data-include="./tool/publications.html"></div>
+
+                    </section>
+
                 </div>
 
                 <div style="display:block; z-index: 1000; position: fixed;

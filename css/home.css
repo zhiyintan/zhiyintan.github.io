@@ -1,0 +1,70 @@
+/* Home page (English + 简 + 繁). Loaded after index.css, so it can override it.
+   Only the three index pages link this file; the other pages keep index.css alone. */
+
+/* --- one content width for the whole page --- */
+:root { --content-width: 850px; }
+.idcard-row, .intro, .pub-section, .lang-switch { max-width: var(--content-width); }
+
+/* --- home page only: let the document scroll once content runs past the fold --- */
+html { height: auto; min-height: 100%; overflow-y: auto; }
+/* not scoped to .site-home: csi.js strips that class while scrolling, which would make
+   the rules below flicker on and off mid-scroll. */
+body { height: auto; min-height: 100%; overflow: visible; }
+/* index.css gives .container `overflow-x: hidden` + `overflow-y: visible`; per spec that
+   computes the visible axis to `auto`, which made it a second scroll container. */
+.container { height: auto; overflow-x: clip; overflow-y: visible; }
+
+/* --- name card --- */
+.idcard-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.5em;
+              align-items: center; padding: 2vw 0 0 0; margin: 0; }
+.idcard-row > li:first-child { grid-column: 2; grid-row: 1; }
+.namecard-cell { grid-column: 1; grid-row: 1; }
+.namecard-cell { min-width: 0; }
+.namecard p { text-align: left; }
+.namecard-role { padding: 0 0 2px 0; }
+.namecard-affil { padding: 0 0 10px 0; font-size: 1.4rem; color: #6f6f6f; }
+.namecard-links { padding: 0; font-size: 1.4rem; }
+.namecard-links a { text-decoration: underline; }
+.namecard-links .sep { color: #9a9a9a; padding: 0 0.3em; }
+
+/* --- intro typography: ragged right + regular weight read denser than
+       justified light text, which opens uneven word gaps at this measure --- */
+/* no font-size here on purpose: the intro inherits the same 1.6rem as .pub-title,
+   so body copy and publication titles stay locked together */
+.intro p { text-align: left; font-weight: 300; line-height: 1.6em; }
+.intro p + p { margin-top: 0.85em; }
+.intro p + p.intro-name { margin-top: 1.2em; }
+.intro p + p.lang-switch { margin-top: 1.8em; }
+/* CJK justifies cleanly (uniform glyph widths, no word gaps to stretch) and wants more leading */
+html[lang^="zh"] .intro p { text-align: justify; line-height: 1.8em; }
+
+/* --- selected publications --- */
+.pub-section { margin: 4.5em 0 3em 0; }
+.pub-heading { font-size: 1.3em; line-height: 1.4em;
+               padding: 0 0 0.5em 0; margin: 0 0 1.6em 0;
+               border-bottom: 1px solid #dcdcdc; }
+.pub { display: grid; grid-template-columns: 8.5em 1fr; column-gap: 1.5em; margin: 0 0 1.8em 0; }
+.pub-meta { display: flex; flex-direction: column; }
+.pub-meta span { font-size: 1.45rem; line-height: 1.55em; color: #8c8c8c; }
+.pub-venue { color: #6f6f6f; }
+.pub-award { color: #9a7b4f; }
+.pub-status { font-style: italic; }
+.pub-title { text-align: left; line-height: 1.5em; color: #333; }
+.pub-authors { text-align: left; font-size: 1.45rem; line-height: 1.6em; color: #6f6f6f; }
+.pub-authors .me { font-weight: 500; color: #3a3a3a; }
+.pub-note { text-align: left; font-size: 1.4rem; line-height: 1.6em; color: #8c8c8c; }
+.pub-links { text-align: left; font-size: 1.45rem; line-height: 1.7em; }
+.pub-links a { margin-right: 0.5em; }
+.pub-more { text-align: left; font-size: 1.45rem; padding-top: 0.5em; }
+.pub-more a { text-decoration: underline; }
+
+.lang-switch { text-align: left; font-size: 1.45rem; margin: 0; }
+.lang-switch a { text-decoration: underline; }
+.lang-switch .sep { color: #b5b5b5; padding: 0 0.15em; }
+
+@media screen and (max-width: 640px) {
+    .idcard-row { grid-template-columns: 1fr; justify-items: start; gap: 1em; }
+    .idcard-row > li:first-child, .namecard-cell { grid-column: 1; grid-row: auto; }
+    .pub { grid-template-columns: 1fr; row-gap: 0.3em; }
+    .pub-meta { flex-flow: row wrap; column-gap: 0.8em; }
+}
